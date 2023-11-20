@@ -1,6 +1,12 @@
 package Humans;
 
 public enum Location {
-    WINDOW,
-    ROOF,
+    WINDOW("окно"),
+    ROOF("крыша");
+
+    public final String currentLocation;
+
+    Location(String location) {
+        this.currentLocation = location;
+    }
 }

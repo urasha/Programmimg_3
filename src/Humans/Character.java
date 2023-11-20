@@ -1,19 +1,13 @@
 package Humans;
 
-import java.util.Objects;
-
 abstract public class Character {
-    protected String name;
+    abstract public void lookAt(Character character);
 
-    public Character(String name) {
-        this.name = name;
-    }
+    protected String name;
 
     @Override
     public String toString() {
-        return "Character{" +
-                "name='" + name + '\'' +
-                '}';
+        return "Character{}";
     }
 
     @Override
@@ -21,11 +15,11 @@ abstract public class Character {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Character character = (Character) o;
-        return Objects.equals(name, character.name);
+        return super.equals(o);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name);
+        return super.hashCode();
     }
 }

@@ -1,13 +1,13 @@
 import Humans.Baby;
-import Humans.BuzzPower;
+import Buzz.BuzzPower;
 import Humans.Carlson;
 import Buzz.Buzz;
 import Humans.Location;
 
 public class Main {
     public static void main(String... args) {
-        Baby baby = new Baby("Малыш");
-        Carlson carlson = new Carlson("Карлсон");
+        Baby baby = Baby.getInstance();
+        Carlson carlson = Carlson.getInstance();
 
         baby.breathe();
 

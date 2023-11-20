@@ -1,7 +1,5 @@
 package Buzz;
 
-import Humans.BuzzPower;
-
 import java.util.Objects;
 
 public class Buzz {

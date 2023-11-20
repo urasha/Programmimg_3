@@ -2,16 +2,23 @@ package Humans;
 
 import Buzz.Buzz;
 
-import java.util.HashMap;
-
 public class Baby extends Character {
-    private final HashMap<BuzzPower, String> powerToBuzzPhrase = new HashMap<>() {{
-        put(BuzzPower.WEAK, String.format("%s услышал слабое жужжание\n", name));
-        put(BuzzPower.STRONG, String.format("%s слышит более громкое жужжание\n", name));
-    }};
+    private static Baby instance;
 
-    public Baby(String name) {
-        super(name);
+    public static synchronized Baby getInstance() {
+        if (instance == null) {
+            instance = new Baby();
+        }
+        return instance;
+    }
+
+    private Baby() {
+        name = "Малыш";
+    }
+
+    @Override
+    public void lookAt(Character character) {
+        System.out.printf("%s взглянул на %s\n", name, character.name);
     }
 
     public void breathe() {
@@ -23,6 +30,6 @@ public class Baby extends Character {
             return;
         }
 
-        System.out.printf(powerToBuzzPhrase.get(buzz.getBuzzPower()));
+        System.out.printf("%s услышал %s\n", name, buzz.getBuzzPower().power);
     }
 }
