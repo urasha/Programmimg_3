@@ -4,10 +4,14 @@ abstract public class Character {
     abstract public void lookAt(Character character);
 
     protected String name;
+    protected Location currentLocation;
 
     @Override
     public String toString() {
-        return "Character{}";
+        return "Character{" +
+                "name='" + name + '\'' +
+                ", currentLocation=" + currentLocation +
+                '}';
     }
 
     @Override

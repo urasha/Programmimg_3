@@ -3,6 +3,8 @@ package Humans;
 import Buzz.Buzz;
 import Buzz.Buzzable;
 import Buzz.BuzzPower;
+import Exceptions.ExistingBuzzException;
+import Exceptions.WrongLocationException;
 
 public class Carlson extends Character implements Buzzable, Flyable {
     private static Carlson instance;
@@ -22,7 +24,11 @@ public class Carlson extends Character implements Buzzable, Flyable {
     }
 
     @Override
-    public void startBuzzing() {
+    public void startBuzzing() throws ExistingBuzzException {
+        if (buzz != null) {
+            throw new ExistingBuzzException(name);
+        }
+
         buzz = new Buzz(BuzzPower.WEAK);
     }
 
@@ -33,10 +39,15 @@ public class Carlson extends Character implements Buzzable, Flyable {
         }
 
         System.out.printf("Карлсон подлетел к %s\n", location.currentLocation);
+        currentLocation = location;
     }
 
     @Override
-    public void flyAround() {
+    public void flyAround() throws WrongLocationException {
+        if (currentLocation != Location.ROOF) {
+            throw new WrongLocationException(name, currentLocation);
+        }
+
         System.out.printf("Набрав высоту, %s сделал небольшой круг над крышей, облетел вокруг трубы\n", name);
     }
 

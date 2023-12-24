@@ -26,10 +26,6 @@ public class Baby extends Character {
     }
 
     public void listen(Buzz buzz) {
-        if (buzz == null) {
-            return;
-        }
-
         System.out.printf("%s услышал %s\n", name, buzz.getBuzzPower().power);
     }
 }

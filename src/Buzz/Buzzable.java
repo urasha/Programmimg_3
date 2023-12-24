@@ -1,5 +1,7 @@
 package Buzz;
 
+import Exceptions.ExistingBuzzException;
+
 public interface Buzzable {
-    void startBuzzing();
+    void startBuzzing() throws ExistingBuzzException;
 }
